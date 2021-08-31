@@ -14,8 +14,11 @@ searchMeal = ()=>{
 }
 
 displayMeal= (meal)=>{
+    // clean serach result and single prvious data 
+    const singleMeal =document.getElementById('singleMeal');
     const cardItem =document.getElementById('cardItem');
-console.log(meal);
+    singleMeal.textContent='';
+    cardItem.textContent ='';
     meal.map(item=>{
         const div = document.createElement('div');
         // div.classList.add('col');
@@ -46,12 +49,12 @@ loadSingleMeal = (id)=>{
 
 displaySingleMeal=meal=>{
     const singleMeal =document.getElementById('singleMeal');
-    
+        singleMeal.textContent='';
         const div = document.createElement('div');
         div.classList.add('card')
 
         div.innerHTML = `
-            <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+            <img height= '350px' src="${meal.strMealThumb}" class="card-img-top" alt="...">
             <div class="card-body my-3">
                 <h5 class="card-title">${meal.strMeal}</h5>
                 <p class="card-text">${meal.strInstructions.slice(0,100)}</p>
