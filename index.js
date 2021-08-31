@@ -1,13 +1,21 @@
 searchMeal = ()=>{
     const inputField =document.getElementById('inputField');
     const inputValue = inputField.value;
+    const emptyInput =document.getElementById('emptyInput');
 
-
-    const url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`;
+    if(inputValue == ''){
+       
+       emptyInput.style.display='block'
+    }else{
+        emptyInput.style.display='none'
+        const url =`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputValue}`;
     
-    fetch(url)
-    .then(res=>res.json())
-    .then(data=>displayMeal(data.meals))
+        fetch(url)
+        .then(res=>res.json())
+        .then(data=>displayMeal(data.meals))
+    }
+
+    
 
     inputField.value=''
   
