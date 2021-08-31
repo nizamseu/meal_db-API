@@ -14,27 +14,43 @@ searchMeal = ()=>{
 }
 
 displayMeal= (meal)=>{
+
+    console.log(meal);
     // clean serach result and single prvious data 
     const singleMeal =document.getElementById('singleMeal');
     const cardItem =document.getElementById('cardItem');
     singleMeal.textContent='';
     cardItem.textContent ='';
-    meal.map(item=>{
-        const div = document.createElement('div');
-        // div.classList.add('col');
-        div.innerHTML = `
-        <div onClick="loadSingleMeal(${item.idMeal})" class="col">
-              <div class="card">
-                <img src="${item.strMealThumb}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">${item.strMeal}</h5>
-                  <p class="card-text">${item.strInstructions.slice(0,200)}</p>
-                </div>
-              </div>
-        </div>
-        `;
-        cardItem.appendChild(div)
-    })
+
+
+// console.log(meal.length);
+const error =document.getElementById('error');
+    if(meal === null){
+        error.style.display='block'
+        console.log(error);
+        console.log("painai");
+    }else {
+        error.style.display='none'
+        meal.map(item=>{
+            const div = document.createElement('div');
+            // div.classList.add('col');
+            div.innerHTML = `
+            <div onClick="loadSingleMeal(${item.idMeal})" class="col">
+                  <div class="card">
+                    <img src="${item.strMealThumb}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">${item.strMeal}</h5>
+                      <p class="card-text">${item.strInstructions.slice(0,200)}</p>
+                    </div>
+                  </div>
+            </div>
+            `;
+            cardItem.appendChild(div)
+        })
+    }
+
+
+    
   
 }
 
